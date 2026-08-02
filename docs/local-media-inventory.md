@@ -67,7 +67,7 @@ API 已重启并实测发现 FLUX checkpoint、四个 UNET（含 Wan）、Union 
 | jianying-last-frame | 剪映草稿或视频最后一帧 | extract_last_frame.py 优先源视频抽帧；复杂叠层草稿须经 UI/导出验证 |
 | Insta360 Desktop Media SDK | 原始 .insv selected-frame、整段拼接 | 官方 C++ Demo / insta360_sdk_frames.py；原片不改，保持 2:1 equirectangular 母版 |
 
-视频分析或粗剪后的外挂字幕已实现为外置 SRT：`external_subtitles.py` 与 `screen_video_batch.py` 会从带时间码的 ASR 保留原文，写出源视频、360 master 和 reframed 候选各自的 SRT，并将候选片段时间码归零。非中文会保留原文并追加通过编号完整性、回显和异常门的简体中文翻译；不完整、异常或缺少翻译器时明确为 `partial`。历史真实视频已验收该链路，合并提交为 `1ced889`。但当前自动发现的主目录仍在 `c597830`，比 `origin/main` 落后 9 个提交且有未提交本地修改；在安全同步前，主目录不能直接调用此功能。VTT、FFmpeg 软封装或烧录不是当前已验收的交付模式。
+视频分析或粗剪后的外挂字幕已实现为外置 SRT：`external_subtitles.py` 与 `screen_video_batch.py` 会从带时间码的 ASR 保留原文，写出源视频、360 master 和 reframed 候选各自的 SRT，并将候选片段时间码归零。非中文会保留原文并追加通过编号完整性、回显和异常门的简体中文翻译；不完整、异常或缺少翻译器时明确为 `partial`。历史真实视频已验收该链路，合并提交为 `1ced889`；自动发现主目录现已同步至 `3e23b08` 并完成 86 项测试。VTT、FFmpeg 软封装或烧录不是当前已验收的交付模式。
 
 网页播放采集仅在完整视频与平台字幕不可得时启用：目标应用单独输出到 VB-CABLE，确认 has_signal: true 后再由 FFmpeg 录制；不改系统默认扬声器、不读取或导出 Cookie、不绕过 DRM。
 
