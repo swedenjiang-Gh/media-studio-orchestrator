@@ -1,0 +1,4 @@
+interface:
+  display_name: "视频理解、筛片与粗剪"
+  short_description: "为本地和网页视频提供理解、筛片、候选粗剪、对话定位、信息提取和学习笔记"
+  default_prompt: "Use $video-learning to understand, screen, extract candidate clips from, or create Chinese learning notes for these authorized videos, folders, or URLs."

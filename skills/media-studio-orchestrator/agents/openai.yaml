@@ -1,0 +1,4 @@
+interface:
+  display_name: "Media Studio Orchestrator"
+  short_description: "Route local and cloud media work"
+  default_prompt: "Use $media-studio-orchestrator to handle this media task."

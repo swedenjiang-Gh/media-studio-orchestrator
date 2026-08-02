@@ -1,0 +1,28 @@
+# Health and paths
+
+Use this reference before executing a route that depends on local software, models, GPU, ports, or credentials. Status means: `ready` = required checks pass for this action; `partial` = some chain parts work but an input/workflow/production proof is absent; `missing` = a required component is absent; `blocked` = policy, authorization, or model-selection prevents action.
+
+| Component | Verified root or endpoint | Minimum check |
+| --- | --- | --- |
+| ComfyUI API | `http://127.0.0.1:8188/object_info`; shared root `D:\Comfy-Desktop\ComfyUI-Shared` | Request `object_info`; confirm the required node and model dropdown include the exact model before submission. |
+| Comfy input/output | `D:\Comfy-Desktop\ComfyUI-Shared\input` and `output` | Confirm the active backend uses these shared paths. |
+| rembg | `D:\AI\rembg` | Run its dedicated venv entry and confirm `CUDAExecutionProvider` is first; confirm the selected ONNX model exists. |
+| Video learning | `D:\CodexVideoLearning` | Confirm user/process `VIDEO_LEARNING_ROOT` resolves here, then run its runtime check. |
+| Voice | `D:\AI\Voice` | Use each product's venv/entry rather than global Python. |
+| MuseTalk | `D:\AI\Video\MuseTalk` | Check its declared service/CLI and available GPU before processing. |
+
+For agent-driven ComfyUI API work, use the existing hidden local API task. For user-operated canvas work, launch Comfy Desktop visibly. Reuse a healthy service; do not start a second backend on port 8188.
+
+## Credential and connection checks
+
+Check only existence and reachability, never values. Kitool GPT Image has a private local configuration; XYQ uses a user/process environment variable; Hugging Face restricted downloads use the Windows credential helper; HeyGen uses its connected MCP. OpenAI API availability is independent of built-in Codex image generation. Treat missing provider configuration, exhausted quota, or unknown model selector as `missing` or `blocked`.
+
+## Comfy model gate
+
+Before a route, verify the relevant names appear in the actual API dropdowns: FLUX checkpoint/CLIP/VAE for FLUX; PuLID model and Union ControlNet for identity plus pose; Wan UNET, UMT5 text encoder, and Wan VAE for Wan. The shared library contains verified components, but a new Canvas/API JSON pair and material-specific output remain separate acceptance work.
+
+Never copy models, outputs, private inputs, credential files, or caches into a repository merely to make a check pass.
+
+## Face scan model-root gate
+
+For `screen_video_batch.py` or `scan_known_faces.py`, pass `D:\CodexVideoLearning\models\face-recognition` as `--model-root`. `create_face_analysis()` appends `models\antelopev2` internally. Passing the nested `...\face-recognition\models` path makes InsightFace treat its existing model as absent and can trigger an unintended duplicate download. Before any face scan, confirm the expected `models\antelopev2` directory exists and that its CUDA provider preflight succeeds.

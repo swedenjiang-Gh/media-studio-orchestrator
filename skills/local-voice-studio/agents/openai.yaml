@@ -1,0 +1,4 @@
+interface:
+  display_name: "Local Voice Studio"
+  short_description: "Authorized local speech, voice conversion, and lip-sync."
+  default_prompt: "Use the local voice tools to create authorized speech, change an authorized recording voice, or generate an authorized MuseTalk lip-sync video."

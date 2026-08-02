@@ -1,4 +1,6 @@
-# 本地运行验收记录（2026-08-02）
+# 本地运行验收记录（2026-08-02，早期快照）
+
+> 后续已完成 Canvas/API 实跑、Desktop 画布导入、非人物抠图和双语外置 SRT 验收；最新边界见 `skills/media-studio-orchestrator/references/acceptance.md`。
 
 本记录只保留能力与验证边界；不包含用户素材、绝对路径、媒体输出或凭据。
 

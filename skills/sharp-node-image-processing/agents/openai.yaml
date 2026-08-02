@@ -1,0 +1,7 @@
+interface:
+  display_name: "Sharp Node Image Processing"
+  short_description: "Programmatic image processing for Node projects"
+  default_prompt: "Use $sharp-node-image-processing to process images in this Node workflow and verify the output."
+
+policy:
+  allow_implicit_invocation: true

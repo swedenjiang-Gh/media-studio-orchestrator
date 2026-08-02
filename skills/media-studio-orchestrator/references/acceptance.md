@@ -1,0 +1,48 @@
+# Acceptance record and material gates
+
+Use this record for every new production workflow: input assets in order, authorization basis, executor/version, model/node names, prompt, seed, resolution, frames/fps/duration, elapsed time, output path, checks run, human conclusion, and remaining uncertainty. Store no assets or secrets in a public repository.
+
+## Current workstation acceptance snapshot — 2026-08-02
+
+`pass` means the stated narrow route ran on real material; it is not a blanket production-quality claim. `partial` means a real result exists but a quality or scope gate remains. `not accepted` means no end-to-end output exists for that capability.
+
+| Capability | Status | Real evidence | Remaining acceptance gate |
+| --- | --- | --- | --- |
+| Authorized YouTube download → probe → preserved platform captions → CUDA evidence scan | pass | `rKgtm81yi94` real public video; complete MP4, original `zh-CN` VTT, 7 event intervals and coverage frames | None for this source route; still respect authorization/access boundaries per new source. |
+| Chinese ASR → external SRT | pass, wording review required | Local bike-dialogue source wrote UTF-8 `source.zh.srt`; timecodes are real | Human listening review of final wording; ASR does not prove speaker identity. |
+| English ASR → original external SRT → rough-cut candidates → rebased candidate SRT | pass | The same YouTube video produced 221 English segments, source SRT, four H.265/AAC candidates, and rebased English candidate SRTs | ASR quality gate is `needs_manual_or_cross_modal_review`; do not release wording without review. |
+| English/other-language → Simplified-Chinese bilingual SRT | pass, source-specific coverage; wording review required | Real `rKgtm81yi94` produced `source.bilingual.en-zh.semantic-platform.srt`: 221 raw English ASR fragments were preserved and merged into 106 complete sentence/utterance blocks. Platform `zh-CN` VTT aligned all 106 blocks (midpoint first, then ≥20% overlap fallback); first/middle/last SRT blocks and numbering were inspected. The normal `screen_video_batch.write_subtitle_delivery` entry also smoke-ran on this real dialogue/VTT pair and wrote 106/106 bilingual blocks. Earlier local-Qwen 24-segment/1024-token files remain `partial` evidence only. | Listen/sample-review English ASR wording and timing before release on a new source. For a source without usable platform captions, translate complete units with context and keep `partial` until all numbered units and samples pass. |
+| VTT writing, embedded subtitle track, or burned subtitles | not accepted | No writer/FFmpeg smoke record | Implement and test the requested delivery mode on a real video. |
+| Human rembg (`u2net_human_seg`, CUDA) | basic pass | Authorized full-body image produced a clean standard RGBA PNG | Human review each final asset; alpha matting showed visible haze around hair/body. |
+| Non-person object rembg (`isnet-general-use`) | pass, scoped | CUDA wrapper cut out the authorized `bicycle-front-child-seat-preview.png`; output is 1536×1024 `srgba` PNG with non-opaque alpha. Visual review retained the child seat, wheel spokes, brake cables, pedals, stand, and bicycle silhouette. | Review each final production asset; test another difficult material only when its edges are material to that delivery. |
+| Known-person review candidates | partial | CUDA InsightFace runtime/reference-library route is available; outputs are review candidates only | Independently labeled video and Top-1, false-positive, and false-negative metrics; never promote to automatic name confirmation. |
+| Insta360 raw `.insv` → stitched 2:1 master | pass | Official MediaSDK 3.1.3.1 Demo produced selected frames and a full real-source `3840×1920` H.265/AAC master | Compare against Studio and test model/casing settings when a new camera/source requires it. |
+| Insta360 Studio Deep Track equivalent through local SDK | not accepted | The installed public SDK headers/Demo expose stitching/export, not a continuous face/object tracking API | Use Studio Deep Track manually; only automate through an SDK after a public, tested tracking API exists. |
+| PuLID-Flux + FLUX Union ControlNet keyframe | partial, visual quality not accepted | Saved Canvas/API pair and real rider output; PuLID + Union chain completed with CUDA InsightFace. Human visual review found the generated face materially unlike the supplied face reference; the Canny guide also does not encode the requested helmet. | Rebuild with a multi-view character reference and an actual pose/composition guide, then review face similarity, clothing/helmet details, pose, composition, and cross-person leakage. A successful queue is not identity acceptance. |
+| Saved Canvas JSON import in ComfyUI Desktop | pass, three workflow scope | `pulid-union-rider-smoke`, `wan22-i2v-nkf01-smoke`, and `wan21-t2v-13b-living-room-smoke` were each opened from the actual Desktop workflow sidebar in separate tabs. Their graphs showed visible links; the three JSONs contain respectively 18/22, 17/22, and 11/14 nodes/links. No missing-node or missing-model warning was emitted during loading. | This proves these saved copies can be opened and edited in the current Desktop install; it does not promote API/link success to visual-quality acceptance, nor validate future manual edits until the API copy is resynchronized. |
+| Wan I2V | pass, one low-resolution I2V smoke | Saved Canvas/API pair; project NKF01 first frame produced a 512×288/33-frame/16-fps H.264 MP4 with small visible motion | Test target delivery resolution/duration and any tail-frame/adjacent-shot continuity; this entry has only first-frame control. |
+| Wan T2V 1.3B | pass, basic runtime/semantic smoke | Saved Canvas/API pair; the 1.3B model produced a 512×288/33-frame/16-fps H.264 MP4 | No project role reference is used; do not treat this as character consistency, long-form, or production-quality acceptance. |
+| GPT-SoVITS, RVC, VoxCPM2 | not accepted | No authorized trained weight or conversion/narration sample has been accepted | Authorized clean data and transcript; resulting weight/index as applicable, sample, authorization record, and listening review. |
+| MuseTalk lip sync | not accepted | No real output acceptance record | Authorized portrait/video and driving audio; review lip sync, identity, stability, and A/V synchronization. |
+| Cloud video generation | not accepted | No submitted task is an acceptance record | Write/update `视频生成任务上下文提交包.md`, confirm model selection, submit only with authorization, then inspect downloaded output. |
+
+## Material gates for a new acceptance
+
+| Capability | Required user material | Pass boundary |
+| --- | --- | --- |
+| PuLID + Union ControlNet | 6–12 authorized character images; pose/composition reference; shot specification | Saved Canvas/API pair, fixed-seed output, and human review for identity, pose, composition, and cross-person leakage. |
+| Wan I2V | Approved first frame; optional end frame; duration/fps/resolution/action | One-shot video and first/last-frame review for action, continuity, flicker, and duration. |
+| Wan T2V 1.3B | Publicly retainable test prompt and target timing/specification | Minimal workflow plus output proves runtime/basic semantics only. |
+| Known-person recognition | Reference directory/images and independently labeled test video | Threshold record, review candidates, Top-1/false-positive/false-negative metrics. |
+| Voice conversion or cloning | Authorized 20–40 minute clean dataset and transcript | Weight (and optional index), conversion sample, authorization and listening review. |
+| MuseTalk | Authorized portrait/video and driving audio | Output review for lip sync, identity, stability, and audio/video synchronization. |
+
+### No-side-effect routing cases
+
+| Request | Correct outcome before execution |
+| --- | --- |
+| Identity-consistent Wan video without reference image or saved Canvas/API pair | `partial`; request the missing material and workflow, do not submit. |
+| Replace a product background while preserving all remaining pixels | ImageMagick route; require source/output specification. |
+| Download and summarize an authorized Japanese tutorial, then produce bilingual subtitles | `download-videos` then `video-learning`; bilingual delivery remains `partial` until the translator completes every numbered line and sampled quality review passes. |
+| Add subtitles to an authorized local video with no captions | The verified route creates an external SRT; review ASR wording before release. |
+| Seedance 2.0 mini with no explicit model selector | `blocked`; do not submit a cloud request. |
