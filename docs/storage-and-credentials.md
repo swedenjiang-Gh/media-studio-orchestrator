@@ -2,14 +2,16 @@
 
 快照日期：2026-08-02。容量以递归文件总和统计，单位 GiB；不包含显存占用，不代表目录内所有文件都是不可替代依赖。模型、用户媒体和输出均不应提交到本仓库。
 
+本次变更后，Comfy 共享模型目录为 84.864 GiB，rembg 目录为 3.910 GiB，列出目录的合计为 193.563 GiB。Wan 1.3B 与 isnet-general-use 的校验记录见 validation-and-acceptance.md。
+
 ## 目录容量
 
 | 路径 | 容量 | 内容/用途 |
 | --- | ---: | --- |
-| D:\Comfy-Desktop\ComfyUI-Shared\models | 82.221 | ComfyUI 模型共享库 |
+| D:\Comfy-Desktop\ComfyUI-Shared\models | 84.864 | ComfyUI 模型共享库；包含 Wan 换新后的 2.643 GiB 正式文件与 6 MiB 不完整备份 |
 | D:\Comfy-Desktop\ComfyUI-Installs | 6.861 | ComfyUI 后端、节点、运行环境 |
 | D:\Program Files\Comfy Desktop | 0.472 | Comfy Desktop GUI |
-| D:\AI\rembg | 3.744 | CUDA rembg、Python venv、模型 |
+| D:\AI\rembg | 3.910 | CUDA rembg、Python venv、人物与非人物抠图模型 |
 | D:\CodexVideoLearning | 53.867 | 视频学习环境、模型、参考库与工作产物；工作产物可增长 |
 | D:\AI\Voice\VoxCPM2 | 8.113 | VoxCPM2、CUDA 环境与模型 |
 | D:\AI\Voice\GPT-SoVITS | 11.756 | GPT-SoVITS 基础权重、运行环境 |
@@ -17,7 +19,7 @@
 | D:\AI\Video\MuseTalk | 12.569 | MuseTalk 权重、运行环境 |
 | D:\Tools\CodexVideoDownloader | 0.017 | 下载工具包装目录 |
 | C:\Program Files\ImageMagick-7.1.2-Q16-HDRI | 0.060 | ImageMagick 程序 |
-| **上述目录合计** | **190.754** | 仅列出的运行目录，未计用户下载、素材、缓存和输出 |
+| **上述目录合计** | **193.563** | 仅列出的运行目录，未计用户下载、素材、缓存和输出 |
 
 ## 关键模型文件
 
@@ -33,9 +35,9 @@
 | Wan LightX2V LoRA high / low | models\loras\wan2.2_i2v_lightx2v_4steps_lora_v1_*.safetensors | 各 1.143 GiB | Wan 加速 LoRA |
 | UMT5 XXL FP8 | models\text_encoders\umt5_xxl_fp8_e4m3fn_scaled.safetensors | 6.273 GiB | Wan 文本编码器 |
 | Wan VAE | models\vae\wan_2.1_vae.safetensors | 0.236 GiB | Wan 解码 |
-| Wan 2.1 T2V 1.3B | models\diffusion_models\wan2.1_t2v_1.3B_fp16.safetensors | 0.006 GiB | 损坏/未完整下载，不可用 |
+| Wan 2.1 T2V 1.3B | models\diffusion_models\wan2.1_t2v_1.3B_fp16.safetensors | 2.643 GiB | 正式文件已校验，API 可发现；尚未完成 T2V 生成验收 |
 | rembg 人像 | D:\AI\rembg\models\u2net_human_seg.onnx | 167.8 MiB | 已存在，人物抠图 CUDA 路线 |
-| rembg 物体 | D:\AI\rembg\models\isnet-general-use.onnx | 约 176 MiB（预计） | 缺失；需下载到 D 盘后验证 |
+| rembg 物体 | D:\AI\rembg\models\isnet-general-use.onnx | 170.4 MiB | 已安装、MD5 校验，并以 CUDA Provider 验证 |
 | Whisper large-v3-turbo | D:\CodexVideoLearning 下的模型目录 | 1.507 GiB | CUDA 转写 |
 | Qwen2.5-VL-7B Q8 + projector | D:\CodexVideoLearning 下的模型目录 | 7.542 + 1.261 GiB | 本地视觉理解 |
 | VoxCPM2 主模型 + AudioVAE | D:\AI\Voice\VoxCPM2 | 4.266 + 0.351 GiB | 本地语音生成/参考音色 |

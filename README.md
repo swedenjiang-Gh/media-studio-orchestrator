@@ -34,14 +34,15 @@ flowchart TD
 
 未来应建设一个“总控大 Skill”，只负责任务分类、健康检查、统一路径、任务记录和验收；保留现有专用 Skill/CLI/API 作为执行器。把所有实现细节硬塞进一个超长 `SKILL.md` 会造成重复规则和难以维护的分支。
 
-## 当前最高优先级
+## 本次完成与后续
 
-1. 修复 ComfyUI API 对 `D:\Comfy-Desktop\ComfyUI-Shared\models` 的加载，并统一输入/输出路径；通过 FLUX、PuLID + Union ControlNet、Wan I2V 三个单镜 smoke test。
-2. 将 `VIDEO_LEARNING_ROOT` 统一设置为 `D:\CodexVideoLearning`，淘汰文档中的旧示例 `D:\VideoLearning`。
-3. 补齐约 176 MiB 的 `isnet-general-use.onnx` 到 `D:\AI\rembg\models`，并验证一个非人物物体抠图。
-4. 先建立 Canvas/API 成对工作流和运行记录，再考虑统一 Media MCP。
+1. 已完成：ComfyUI API 共享模型、输入与输出路径修复；FLUX 固定 seed 冒烟图通过。
+2. 已完成：VIDEO_LEARNING_ROOT 已统一为 D:\CodexVideoLearning，并已通过运行时自检。
+3. 已完成：isnet-general-use.onnx 已下载、校验并用 CUDA Provider 验证。
+4. 已完成：Wan 1.3B 已从官方 ComfyUI 仓库重新下载、SHA-256 校验并被 API 发现。
+5. 后续：收到用户授权的人物图、关键帧、视频或录音后，按验证与验收记录建立相应 Canvas/API 工作流并做生产验收。
 
-这些动作会改变本机配置、下载模型或消耗 GPU，因此不随本次盘点自动执行。
+需要素材的验收项目及交付标准见 docs/validation-and-acceptance.md。
 
 ## 安全与仓库边界
 
@@ -54,3 +55,4 @@ flowchart TD
 
 - [本机媒体能力清单](docs/local-media-inventory.md)：Skill、软件、模型、节点、服务、SDK、调用链路与验收状态。
 - [存储与凭据状态](docs/storage-and-credentials.md)：实测容量、模型尺寸、程序路径、环境变量与安全配置位置。
+- [验证与验收记录](docs/validation-and-acceptance.md)：已完成的机器验证，以及等待用户素材的生产验收清单。

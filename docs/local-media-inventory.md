@@ -2,6 +2,10 @@
 
 快照日期：2026-08-02。状态定义：**可运行**表示本轮有直接运行证据；**部分可运行**表示服务或依赖只完成一部分；**文件存在**不等于已接通调用链路。
 
+## 本次更新
+
+ComfyUI API 已修复为使用共享 models、input、output 目录；实际模型下拉现在可见 FLUX checkpoint、Wan、Union ControlNet、PuLID、Redux、SigCLIP 和 UMT5。固定 seed 的 512x512 FLUX 冒烟图已成功输出并完成视觉检查。Wan 1.3B 已重新下载并经官方 SHA-256 校验；isnet-general-use 已安装并以 CUDA Provider 验证。需要人物、关键帧、视频或录音素材的生产级验收见 validation-and-acceptance.md。
+
 ## 图片
 
 | 能力 / Skill | 适用场景 | 调用与依赖 | 当前状态 |
@@ -11,7 +15,7 @@
 | imagemagick-image-editing | 裁剪、缩放、拼接、蒙版、透明度、文字、格式、像素比对 | magick.exe；绝对路径；修改后 identify + 视觉检查 | 可运行，ImageMagick 7.1.2-27 |
 | sharp-node-image-processing | Node 服务、Buffer/Stream、高吞吐缩略图/格式转换 | 交付代码应依赖项目本地 sharp；全局 Sharp 仅临时命令 | 全局 sharp@0.35.3 已安装；修改项目依赖前须征得同意 |
 | rembg-background-removal | 语义抠图、透明 PNG、视频前景素材 | D:\AI\rembg\venv\Scripts\python.exe + D:\AI\rembg\remove-background.py | 人物 u2net_human_seg CUDA 模型可用；物体模型缺失 |
-| comfyui-local-image-workflows | 离线、固定 seed、参考图构图/色调、批量统一关键帧 | ComfyUI 127.0.0.1:8188、FLUX/Redux/Fill、submit_comfy_workflow.py | API 在线但模型加载不完整；不能误报为可自动出图 |
+| comfyui-local-image-workflows | 离线、固定 seed、参考图构图/色调、批量统一关键帧 | ComfyUI 127.0.0.1:8188、FLUX/Redux/Fill、submit_comfy_workflow.py | 共享模型路径已修复；FLUX 文生图 smoke test 已通过 |
 
 ### 图片路由规则
 
@@ -34,7 +38,7 @@ FLUX 已验证的节点逻辑是：CheckpointLoaderSimple → CLIP 正/负提示
 | --- | --- | --- | --- |
 | comfyui-video-workflow-author | Wan I2V、FLUX 关键帧、PuLID、Union ControlNet、Canvas/API JSON | Canvas/API 应成对存于 D:\Comfy-Desktop\ComfyUI-Shared\workflow-library\canvas 和 api | 目录目前没有可复用工作流；未 smoke test |
 | Wan 2.2 I2V | 首帧/关键帧驱动本地视频 | 高噪 + 低噪 14B → VAE → 视频合成 | 模型在盘，API 路径未验通 |
-| Wan 2.1 T2V 1.3B | 轻量纯文本视频预演 | T2V 工作流 | 当前文件仅 0.006 GiB 且校验失败；不可用。只有需要纯 T2V 才建议重下 |
+| Wan 2.1 T2V 1.3B | 轻量纯文本视频预演 | T2V 工作流 | 正式文件已校验并可被 API 发现；尚未建立 T2V 工作流或生成视频 |
 | xyq-skill | 小云雀云端图、文生视频、图生视频、视频编辑/续写/MV | 上传图片/视频/mp3/wav → asset_id → submit_run.py → 轮询 → 下载 | XYQ_ACCESS_KEY 已在 Process/User 层；提交前先写上下文包 |
 | xyq-short-drama-skill | 短剧：剧本、场景、角色、分镜、成片 | pippit-tool-cli short-drama 提交、轮询、列文件、下载资产 | CLI 已装；Access Key 可用；模型/额度逐任务核验 |
 | HeyGen 插件 | 云端数字人、口播视频 | 已连接的 HeyGen MCP/连接器管理身份与请求 | 连接器凭据不落本地文档；本次未提交任务 |
@@ -43,7 +47,7 @@ FLUX 已验证的节点逻辑是：CheckpointLoaderSimple → CLIP 正/负提示
 
 已有计划任务 ComfyUI Local API，通过隐藏脚本 D:\Comfy-Desktop\ComfyUI-Shared\scripts\Start-ComfyUI-Api-hidden.vbs 启动；后端目录为 D:\Comfy-Desktop\ComfyUI-Installs\ComfyUI\ComfyUI，仅监听 127.0.0.1:8188。这符合“智能体 API 后台运行”；用户手动打开 Comfy Desktop 时保持可见。两种模式必须复用已有服务，不能抢同一端口。
 
-本轮 API 在线；UNETLoader 识别 4 项、CLIPLoader 识别 25 项，但 CheckpointLoaderSimple、ControlNetLoader、PulidFluxModelLoader 模型下拉为 0。共享模型目录未被完整加载，或模型类别映射不匹配。修复应通过后端的 --extra-model-paths-config 指向共享 models，并统一提交脚本、API 输入输出目录；不要复制 82 GiB 模型。
+API 已重启并实测发现 FLUX checkpoint、四个 UNET（含 Wan）、Union ControlNet、PuLID、Redux、SigCLIP 和 UMT5。实际修复是保留后端与自定义节点目录，并传入 --models-directory、--input-directory、--output-directory；没有使用会切走自定义节点的 --base-directory，也没有复制模型。
 
 ### 工作流交付与验收
 
