@@ -30,7 +30,7 @@ Read `local-machine/local-media-inventory.md` and `local-machine/storage-and-cre
 
 1. Classify the requested outcome and whether it is local, cloud, deterministic, or generative.
 2. Read only the relevant reference below.
-3. If a dependent chain has no current verified health state, run the minimum dependency check in `references/health-and-paths.md`. Reuse a healthy state within the conversation; recheck after a process/API restart, a failed call, a relevant model/node/provider change, or an uncertain external-state change.
+3. If a dependent chain has no current verified health state—its first attempt in this conversation for that route/service and relevant model/node/provider—run the minimum dependency check in `references/health-and-paths.md`. Reuse a healthy state within the conversation; recheck after a process/API restart, a failed call, a relevant model/node/provider change, or an uncertain external-state change.
 4. Return one state: `ready`, `partial`, `missing`, or `blocked`.
 5. Enforce consent, model-selection, and project-context gates; then select the execution route.
 6. Preserve source assets and record the output path, parameters, executor, and validation boundary.
