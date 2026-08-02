@@ -1,7 +1,0 @@
-interface:
-  display_name: "ImageMagick Image Editing"
-  short_description: "使用 ImageMagick 完成本地图片编辑和验证"
-  default_prompt: "Use $imagemagick-image-editing to edit local images with ImageMagick and verify the output."
-
-policy:
-  allow_implicit_invocation: true

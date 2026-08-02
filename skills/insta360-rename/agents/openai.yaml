@@ -1,3 +1,0 @@
-interface:
-  display_name: "Insta360 视频改名"
-  short_description: "批量重命名 Insta360 运动相机视频及元数据文件为统一格式"

@@ -1,4 +1,0 @@
-interface:
-  display_name: "下载视频"
-  short_description: "使用本机 yt-dlp 与 BBDown 下载多个视频平台链接"
-  default_prompt: "下载这个视频链接到 D:\\VideoDownloads"

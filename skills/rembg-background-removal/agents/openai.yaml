@@ -1,4 +1,0 @@
-interface:
-  display_name: "Rembg Background Removal"
-  short_description: "GPU background removal to transparent PNG"
-  default_prompt: "Remove the background from this image and return a transparent PNG."

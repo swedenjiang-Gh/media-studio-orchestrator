@@ -12,12 +12,19 @@
 credentials.json
 config.local.json
 
-# Models, checkpoints, training weights, caches
+# Models, caches, user media, and generated output
 models/
 checkpoints/
 loras/
 vae/
 weights/
+cache/
+tmp/
+input/
+output/
+downloads/
+work/
+exports/
 *.safetensors
 *.ckpt
 *.onnx
@@ -26,15 +33,6 @@ weights/
 *.gguf
 *.bin
 *.pt
-cache/
-tmp/
-
-# User media and generated output
-input/
-output/
-downloads/
-work/
-exports/
 *.mp4
 *.mov
 *.mkv
@@ -51,7 +49,7 @@ exports/
 *.webp
 *.gif
 
-# Local editors and Python/Node environments
+# Local environments and editor state
 .venv/
 venv/
 node_modules/

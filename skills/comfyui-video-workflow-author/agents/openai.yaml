@@ -1,4 +1,0 @@
-interface:
-  display_name: "ComfyUI Video Workflow Author"
-  short_description: "Create reusable ComfyUI video workflow pairs"
-  default_prompt: "Use $comfyui-video-workflow-author to design a ComfyUI video workflow and save matching canvas and API JSON files."

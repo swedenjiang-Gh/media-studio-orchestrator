@@ -1,4 +1,0 @@
-interface:
-  display_name: "ComfyUI Local Workflows"
-  short_description: "Run reproducible local FLUX image workflows"
-  default_prompt: "Use $comfyui-local-image-workflows to create a local reproducible FLUX image."

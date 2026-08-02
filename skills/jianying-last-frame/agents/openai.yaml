@@ -1,4 +1,0 @@
-interface:
-  display_name: "Jianying Last Frame"
-  short_description: "Export the last frame from a Jianying draft or video."
-  default_prompt: "Use $jianying-last-frame to export the last frame from a Jianying draft or video file."
