@@ -22,6 +22,10 @@ Treat this Skill as the routing and acceptance index, not as a replacement for a
 
 Never leave the coordinator and a specialist with different rules for the same situation. A child-Skill-only update is correct when it changes only that child's operational detail; a coordinator-only update is correct when it changes only routing or acceptance evidence.
 
+## Local workstation inventory
+
+When `local-machine/` exists, read `local-machine/local-media-inventory.md` for the broader capability/software inventory and `local-machine/storage-and-credentials.md` for capacity, paths, and credential-status notes. Keep them current after material machine changes. This directory is deliberately Git-ignored: never commit it, copy its private values into a public artifact, or treat it as portable configuration.
+
 ## Required order
 
 1. Classify the requested outcome and whether it is local, cloud, deterministic, or generative.
