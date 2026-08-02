@@ -24,7 +24,7 @@ Never leave the coordinator and a specialist with different rules for the same s
 
 ## Local workstation inventory
 
-When `local-machine/` exists, read `local-machine/local-media-inventory.md` for the broader capability/software inventory and `local-machine/storage-and-credentials.md` for capacity, paths, and credential-status notes. Keep them current after material machine changes. This directory is deliberately Git-ignored: never commit it, copy its private values into a public artifact, or treat it as portable configuration.
+Read `local-machine/local-media-inventory.md` and `local-machine/storage-and-credentials.md` only when a request needs the current local capability/software inventory, capacity, paths, or credential-status notes. Do not read them for an ordinary media task that only needs its specialist Skill and minimum health check. Keep them current after material machine changes. This directory is deliberately Git-ignored: never commit it, copy its private values into a public artifact, or treat it as portable configuration.
 
 ## Required order
 
