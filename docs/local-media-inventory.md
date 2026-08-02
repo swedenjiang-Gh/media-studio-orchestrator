@@ -4,7 +4,7 @@
 
 ## 本次更新
 
-ComfyUI API 已修复为使用共享 models、input、output 目录；实际模型下拉现在可见 FLUX checkpoint、Wan、Union ControlNet、PuLID、Redux、SigCLIP 和 UMT5。固定 seed 的 512x512 FLUX 冒烟图已成功输出并完成视觉检查。Wan 1.3B 已重新下载并经官方 SHA-256 校验；isnet-general-use 已安装并以 CUDA Provider 验证。需要人物、关键帧、视频或录音素材的生产级验收见 validation-and-acceptance.md。
+ComfyUI API 已修复为使用共享 models、input、output 目录；实际模型下拉现在可见 FLUX checkpoint、Wan、Union ControlNet、PuLID、Redux、SigCLIP 和 UMT5。固定 seed 的 512x512 FLUX 冒烟图已成功输出并完成视觉检查。Wan 1.3B 已重新下载并经官方 SHA-256 校验；isnet-general-use 已安装并以 CUDA Provider 验证。统一路由 Skill 已安装在 `C:\Users\J\.codex\skills\media-studio-orchestrator`，并于 2026-08-02 完成结构与无副作用路由场景验证。需要人物、关键帧、视频或录音素材的生产级验收见 validation-and-acceptance.md。
 
 ## 图片
 
@@ -14,7 +14,7 @@ ComfyUI API 已修复为使用共享 models、input、output 目录；实际模�
 | gpt-image | 用户明确要求 CLI 生图或图生图 | Node.js → C:\Users\J\.codex\skills\gpt-image\scripts\generate.js → Kitool GPT-Image-2；默认 2K | 私有 API Key 已配置；云端付费/额度链路，未提交生成任务 |
 | imagemagick-image-editing | 裁剪、缩放、拼接、蒙版、透明度、文字、格式、像素比对 | magick.exe；绝对路径；修改后 identify + 视觉检查 | 可运行，ImageMagick 7.1.2-27 |
 | sharp-node-image-processing | Node 服务、Buffer/Stream、高吞吐缩略图/格式转换 | 交付代码应依赖项目本地 sharp；全局 Sharp 仅临时命令 | 全局 sharp@0.35.3 已安装；修改项目依赖前须征得同意 |
-| rembg-background-removal | 语义抠图、透明 PNG、视频前景素材 | D:\AI\rembg\venv\Scripts\python.exe + D:\AI\rembg\remove-background.py | 人物 u2net_human_seg CUDA 模型可用；物体模型缺失 |
+| rembg-background-removal | 语义抠图、透明 PNG、视频前景素材 | D:\AI\rembg\venv\Scripts\python.exe + D:\AI\rembg\remove-background.py | 人物 u2net_human_seg 与物体 isnet-general-use 均已安装；物体模型已完成 MD5 与 CUDA Provider 验证 |
 | comfyui-local-image-workflows | 离线、固定 seed、参考图构图/色调、批量统一关键帧 | ComfyUI 127.0.0.1:8188、FLUX/Redux/Fill、submit_comfy_workflow.py | 共享模型路径已修复；FLUX 文生图 smoke test 已通过 |
 
 ### 图片路由规则
@@ -30,14 +30,14 @@ ComfyUI API 已修复为使用共享 models、input、output 目录；实际模�
 
 身份一致与姿态/构图同时要求时，目标结构为：参考图 → PuLID-Flux → FLUX Union ControlNet → FLUX 输出。Redux 只能辅助参考，不能承诺身份保持；Fill 不是身份控制替代品。
 
-FLUX 已验证的节点逻辑是：CheckpointLoaderSimple → CLIP 正/负提示词 → FluxGuidance → KSampler → VAEDecode → SaveImage，且 ModelSamplingFlux 与 EmptyLatentImage 尺寸一致、为 8 的倍数。当前 API 未列出 Checkpoint/PuLID/ControlNet 模型，因此先修配置再使用此图。
+FLUX 已验证的节点逻辑是：CheckpointLoaderSimple → CLIP 正/负提示词 → FluxGuidance → KSampler → VAEDecode → SaveImage，且 ModelSamplingFlux 与 EmptyLatentImage 尺寸一致、为 8 的倍数。当前 API 已列出 Checkpoint、PuLID 与 ControlNet 模型；每个新复杂工作流仍须先与实际模型名匹配并完成单项验收。
 
 ## 本地视频生成与云端视频
 
 | 能力 / Skill | 功能 | 调用链路 | 状态 |
 | --- | --- | --- | --- |
 | comfyui-video-workflow-author | Wan I2V、FLUX 关键帧、PuLID、Union ControlNet、Canvas/API JSON | Canvas/API 应成对存于 D:\Comfy-Desktop\ComfyUI-Shared\workflow-library\canvas 和 api | 目录目前没有可复用工作流；未 smoke test |
-| Wan 2.2 I2V | 首帧/关键帧驱动本地视频 | 高噪 + 低噪 14B → VAE → 视频合成 | 模型在盘，API 路径未验通 |
+| Wan 2.2 I2V | 首帧/关键帧驱动本地视频 | 高噪 + 低噪 14B → VAE → 视频合成 | 模型与 API 下拉已发现；尚未建立 I2V Canvas/API 工作流或完成单镜生成验收 |
 | Wan 2.1 T2V 1.3B | 轻量纯文本视频预演 | T2V 工作流 | 正式文件已校验并可被 API 发现；尚未建立 T2V 工作流或生成视频 |
 | xyq-skill | 小云雀云端图、文生视频、图生视频、视频编辑/续写/MV | 上传图片/视频/mp3/wav → asset_id → submit_run.py → 轮询 → 下载 | XYQ_ACCESS_KEY 已在 Process/User 层；提交前先写上下文包 |
 | xyq-short-drama-skill | 短剧：剧本、场景、角色、分镜、成片 | pippit-tool-cli short-drama 提交、轮询、列文件、下载资产 | CLI 已装；Access Key 可用；模型/额度逐任务核验 |

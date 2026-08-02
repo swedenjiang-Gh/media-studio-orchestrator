@@ -25,12 +25,12 @@
 
 | 模型 | 路径 | 容量 | 作用 / 状态 |
 | --- | --- | ---: | --- |
-| FLUX.1-dev FP8 | models\checkpoints\flux1-dev-fp8.safetensors | 16.062 GiB | 本地非商用文生图；文件有效，当前 API 下拉未识别 |
+| FLUX.1-dev FP8 | models\checkpoints\flux1-dev-fp8.safetensors | 16.062 GiB | 本地非商用文生图；文件有效，当前 API 下拉已识别；固定 seed 文生图链路已冒烟验证 |
 | FLUX Fill | models\diffusion_models\flux1-fill-dev.safetensors | 22.170 GiB | 蒙版定稿精修；慢，当前 API 链路未验收 |
 | FLUX Redux | models\style_models\flux1-redux-dev.safetensors | 0.120 GiB | 参考图构图/色调辅助，不保证身份 |
 | SigCLIP vision | models\clip_vision\sigclip_vision_patch14_384.safetensors | 0.798 GiB | Redux 视觉编码器 |
-| PuLID-Flux | models\pulid\pulid_flux_v0.9.0.safetensors | 1.064 GiB | 身份保持；当前 API 下拉为空 |
-| FLUX Union ControlNet | models\controlnet | 约 6.150 GiB | 姿态/构图控制；当前 API 下拉为空 |
+| PuLID-Flux | models\pulid\pulid_flux_v0.9.0.safetensors | 1.064 GiB | 身份保持；当前 API 下拉已识别；尚未以人物素材验收身份效果 |
+| FLUX Union ControlNet | models\controlnet | 约 6.150 GiB | 姿态/构图控制；当前 API 下拉已识别；尚未以姿态/构图素材验收效果 |
 | Wan 2.2 I2V high / low | models\diffusion_models\wan2.2_i2v_*_14B_fp8_scaled.safetensors | 各 13.313 GiB | 本地图生视频两阶段模型 |
 | Wan LightX2V LoRA high / low | models\loras\wan2.2_i2v_lightx2v_4steps_lora_v1_*.safetensors | 各 1.143 GiB | Wan 加速 LoRA |
 | UMT5 XXL FP8 | models\text_encoders\umt5_xxl_fp8_e4m3fn_scaled.safetensors | 6.273 GiB | Wan 文本编码器 |
@@ -59,7 +59,7 @@
 
 ## 路径统一与下一步修改建议
 
-1. 设置用户环境变量 VIDEO_LEARNING_ROOT=D:\CodexVideoLearning；运行脚本统一从变量取根目录，不再使用旧例 D:\VideoLearning。
+1. 用户环境变量 VIDEO_LEARNING_ROOT 已设置为 D:\CodexVideoLearning；后续脚本统一从变量取根目录，不再使用旧例 D:\VideoLearning。
 2. ComfyUI 使用一个共享模型目录 D:\Comfy-Desktop\ComfyUI-Shared\models，通过后端额外模型路径配置加载，避免复制 82.221 GiB。
 3. ComfyUI 的 API 输入、输出与 submit_comfy_workflow.py 必须统一；输出、缓存和用户素材默认不进入 Git。
 4. 如下载 isnet-general-use.onnx 或重下 Wan 1.3B，事前记录来源、目标 D 盘目录、预计容量和校验方式；下载完成后删除安装包，不删除用户现有资产。
