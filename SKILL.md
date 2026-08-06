@@ -22,6 +22,27 @@ Treat this Skill as the routing and acceptance index, not as a replacement for a
 
 Never leave the coordinator and a specialist with different rules for the same situation. A child-Skill-only update is correct when it changes only that child's operational detail; a coordinator-only update is correct when it changes only routing or acceptance evidence.
 
+## Maintenance sweep
+
+When a media capability, path, model, node, rule, or acceptance status changes, sweep the full media-Skill set below, keep every affected file in sync, then commit and push each affected repository. Do not report complete until each affected repository is clean.
+
+独立仓库（本地目录即仓库，直接提交并推送到各自 origin/main）：
+- `media-studio-orchestrator`（总控：SKILL.md、references/*）
+- `video-learning`（SKILL.md、README.md、references/*、scripts/*）
+- `download-videos`（SKILL.md、scripts/download-video.ps1）
+- `comfyui-video-workflow-author`（SKILL.md、assets/*）
+- `ai-short-drama`（SKILL.md、references/*）
+- `local-voice-studio`（SKILL.md、references/*）
+
+父仓库管理（C:\Users\J\.codex，无独立远程，仅内容涉及才修改并提交到 .codex）：comfyui-local-image-workflows、rembg-background-removal、imagemagick-image-editing、sharp-node-image-processing、gpt-image、insta360-rename、jianying-last-frame、windows-rpa、playwright、powershell-safe-invocation、pdf、eb-visio-icon-opener。路径/路由/模型变更通常不涉及它们。
+
+强制动作：
+1. 每次变更先判定归属：总控路由/验收状态、子 Skill 执行细节、`local-machine` 容量/路径/凭据存在性文档，是否需要同步。
+2. 全部改完后，对每个改动过的 Skill 运行 `quick_validate.py`，并对每个改动仓库运行 `git diff --check`。
+3. 有改动的独立仓库逐个提交并推送（每仓库一个提交，推送到各自 origin/main）；有改动的父仓库 skill 提交到 `.codex`。
+4. `local-machine/storage-and-credentials.md` 与 `local-machine/local-media-inventory.md` 只在容量、路径、凭据存在性或能力状态变化时同步内容；它们被 `.gitignore` 忽略，**不推送**（含本机路径与凭据存在性信息，保持本地）。
+5. 完成后报告：改动文件清单、各仓库提交哈希、哪些文档特意不推送。
+
 ## Local workstation inventory
 
 Read `local-machine/local-media-inventory.md` and `local-machine/storage-and-credentials.md` only when a request needs the current local capability/software inventory, capacity, paths, or credential-status notes. Do not read them for an ordinary media task that only needs its specialist Skill and minimum health check. This directory is deliberately Git-ignored: never commit it, copy its private values into a public artifact, or treat it as portable configuration.
