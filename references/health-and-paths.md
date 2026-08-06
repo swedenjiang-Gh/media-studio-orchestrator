@@ -8,7 +8,7 @@ Use this reference when a route needs a new or revalidated local/software/creden
 | Comfy input/output | `D:\Comfy-Desktop\ComfyUI-Shared\input` and `output` | Confirm the active backend uses these shared paths. |
 | MiniMax H3 (GGUF) | `http://127.0.0.1:8188/object_info` | Confirm `MiniMaxH3ImageToVideo` exists; `UnetLoaderGGUF` lists `MiniMax-H3-FL2VA-Q4_K_M.gguf`; `CLIPLoaderGGUF` lists `qwen3vl_32b_minimax_h3-Q4_K_M.gguf` with type `minimax`; `VAELoader` lists `minimax_h3_video_vae_fp16.safetensors` and `minimax_h3_audio_vae_fp32.safetensors`. |
 | rembg | `D:\AI\rembg` | Run its dedicated venv entry and confirm `CUDAExecutionProvider` is first; confirm the selected ONNX model exists. |
-| Video learning | `D:\CodexVideoLearning` | Confirm user/process `VIDEO_LEARNING_ROOT` resolves here, then run its runtime check. |
+| Video learning | tools `D:\CodexVideoLearning`; outputs `D:\VideoLearning` | Confirm user/process `VIDEO_LEARNING_ROOT` resolves to the tools root and `VIDEO_WORK_ROOT` to the output root, then run its runtime check. |
 | Voice | `D:\AI\Voice` | Use each product's venv/entry rather than global Python. |
 | MuseTalk | `D:\AI\Video\MuseTalk` | Check its declared service/CLI and available GPU before processing. |
 
