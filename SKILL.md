@@ -85,7 +85,7 @@ Refresh both files on a material machine change (model added or removed, softwar
 
 ## Compact output contract
 
-Report: selected route, state, checks performed, required inputs or authorization, submitted/not submitted, output location when created, and the remaining validation boundary. Do not expose credential values, cookies, tokens, or private asset paths in a public artifact.
+Report: selected route, state, checks performed, required inputs or authorization, submitted/not submitted, output location when created, and the remaining validation boundary. Do not expose credential values, cookies, tokens, or private asset paths in a public artifact. For every video task, the report must include a compliance statement: frame-extraction method (event-driven or declared fixed-interval approximation), transcription quality-gate steps actually run, and subtitle status (requested/not requested/partial). A step that was not run must be stated as not run rather than silently skipped.
 
 ## Deliverable links
 
