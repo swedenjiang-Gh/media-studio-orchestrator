@@ -20,9 +20,15 @@ For known-person recognition, use the read-only reference index and calibrated s
 
 ## Local generation
 
+Local video generation is a first-class route equal to the cloud, not merely a preview: Wan 2.2 T2V 14B (text to video, ≈2.10 min at 832×480/3 s), Wan 2.2 I2V 14B (≈1.50 min), and MiniMax H3 (T2V/I2V with native AAC 32 kHz audio, ≈2.0–2.3 min). When the user asks to generate a video, present both routes (local vs cloud) and let the user choose before spending quota or compute; do not default to cloud with local treated only as a reminder. Choose local for free generation, fixed-seed reproducibility, controlled outputs, privacy, and batch-consistent shots; choose cloud when the local chain cannot meet the requested model/quality/duration/audio or the user explicitly picks it.
+
+
 Use `comfyui-video-workflow-author` for FLUX keyframes, PuLID/Union ControlNet, Wan, and MiniMax H3 (GGUF). Before Wan I2V/T2V submission, verify Wan model components in the live API and store a matching Canvas JSON, API JSON, and explanation. A verified Wan 1.3B file is not a completed text-to-video workflow; an I2V request also needs an approved first frame, target duration/fps/resolution, and action brief. Wan 2.2 T2V 14B FP8 + LightX2V v1.1 4-step LoRA is installed and chain-verified on 2026-08-06 (832×480/3s ≈ 2.10 min, silent output); Wan 2.2 I2V 14B FP8 remains the verified I2V path (≈ 1.50 min at the same spec). Per-shot inputs, prompts, and outputs still require acceptance. MiniMax H3 reuses the stored `minimax-h3-t2v` / `minimax-h3-i2v` Canvas/API pairs; its T2V smoke test passed on 2026-08-06 with H.264 24fps video and AAC 32kHz stereo audio.
 
 ## Cloud generation
+
+The cloud is one of two routes, not the default. Before a paid cloud submission, offer an optional local dry-run when the shot is previewable locally — Wan 2.2 T2V 14B, MiniMax H3 (native audio), Wan 2.2 I2V 14B, and Wan2ReferenceVideoApi / MiniMaxH3ReferenceToVideo for reference consistency. This is a reminder, not a gate: present the choice and let the user decide per submission (local preview now, or submit to the cloud directly). The local preview does not replace the context-submission package, the explicit model-selection gate, or per-shot authorization.
+
 
 Before a paid cloud submission, offer an optional local dry-run when the shot is previewable locally — Wan 2.2 T2V 14B (text to video, 832×480/3 s ≈ 2.10 min), MiniMax H3 (T2V/I2V with native AAC 32 kHz audio, ≈ 2.0–2.3 min), Wan 2.2 I2V 14B (≈ 1.50 min), and Wan2ReferenceVideoApi / MiniMaxH3ReferenceToVideo for reference consistency. This is a reminder, not a gate: present the choice and let the user decide per submission (local preview now, or submit to the cloud directly). The local preview does not replace the context-submission package, the explicit model-selection gate, or per-shot authorization.
 
