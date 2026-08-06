@@ -2,7 +2,7 @@
 
 Use this record for every new production workflow: input assets in order, authorization basis, executor/version, model/node names, prompt, seed, resolution, frames/fps/duration, elapsed time, output path, checks run, human conclusion, and remaining uncertainty. Store no assets or secrets in a public repository.
 
-## Current workstation acceptance snapshot — 2026-08-02
+## Current workstation acceptance snapshot — 2026-08-06
 
 `pass` means the stated narrow route ran on real material; it is not a blanket production-quality claim. `partial` means a real result exists but a quality or scope gate remains. `not accepted` means no end-to-end output exists for that capability.
 
