@@ -24,7 +24,9 @@ Never leave the coordinator and a specialist with different rules for the same s
 
 ## Local workstation inventory
 
-Read `local-machine/local-media-inventory.md` and `local-machine/storage-and-credentials.md` only when a request needs the current local capability/software inventory, capacity, paths, or credential-status notes. Do not read them for an ordinary media task that only needs its specialist Skill and minimum health check. Keep them current after material machine changes. This directory is deliberately Git-ignored: never commit it, copy its private values into a public artifact, or treat it as portable configuration.
+Read `local-machine/local-media-inventory.md` and `local-machine/storage-and-credentials.md` only when a request needs the current local capability/software inventory, capacity, paths, or credential-status notes. Do not read them for an ordinary media task that only needs its specialist Skill and minimum health check. This directory is deliberately Git-ignored: never commit it, copy its private values into a public artifact, or treat it as portable configuration.
+
+Refresh both files on a material machine change (model added or removed, software installed or uninstalled, credential configuration changed) and at least monthly. Refresh means: recount the directory capacities with a recursive file-size sum, verify key model paths and sizes, sync capability status with `references/acceptance.md`, and record credential existence only, never values. After a refresh, if any tracked file changed, validate the Skill folder with `quick_validate.py` before reporting complete.
 
 ## Required order
 
