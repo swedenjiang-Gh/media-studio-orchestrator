@@ -87,6 +87,10 @@ Refresh both files on a material machine change (model added or removed, softwar
 
 Report: selected route, state, checks performed, required inputs or authorization, submitted/not submitted, output location when created, and the remaining validation boundary. Do not expose credential values, cookies, tokens, or private asset paths in a public artifact.
 
+## Deliverable links
+
+At the end of a media task, present every deliverable (video, audio, image, subtitle, report, JSON) as a clickable Markdown link with a short label — e.g. `[字幕 SRT](D:/VideoLearning/work/<job>/source.srt)` or `![关键帧](D:/VideoLearning/work/<job>/frames/frame-02.png)` — never as a bare path. Inside a written summary or report, reference the supporting material (keyframes, clips, audio, SRT) the same way: link or embed each asset next to the claim it supports. Use the absolute path as the link target; a plain path is acceptable only as a fallback note when a link cannot be rendered.
+
 ## Acceptance presentation
 
 When a task creates or validates a media artifact, make the evidence visible in the conversation instead of reporting only a path, log, or `pass` label:
