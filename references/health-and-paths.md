@@ -6,6 +6,7 @@ Use this reference when a route needs a new or revalidated local/software/creden
 | --- | --- | --- |
 | ComfyUI API | `http://127.0.0.1:8188/object_info`; shared root `D:\Comfy-Desktop\ComfyUI-Shared` | Request `object_info`; confirm the required node and model dropdown include the exact model before submission. |
 | Comfy input/output | `D:\Comfy-Desktop\ComfyUI-Shared\input` and `output` | Confirm the active backend uses these shared paths. |
+| MiniMax H3 (GGUF) | `http://127.0.0.1:8188/object_info` | Confirm `MiniMaxH3ImageToVideo` exists; `UnetLoaderGGUF` lists `MiniMax-H3-FL2VA-Q4_K_M.gguf`; `CLIPLoaderGGUF` lists `qwen3vl_32b_minimax_h3-Q4_K_M.gguf` with type `minimax`; `VAELoader` lists `minimax_h3_video_vae_fp16.safetensors` and `minimax_h3_audio_vae_fp32.safetensors`. |
 | rembg | `D:\AI\rembg` | Run its dedicated venv entry and confirm `CUDAExecutionProvider` is first; confirm the selected ONNX model exists. |
 | Video learning | `D:\CodexVideoLearning` | Confirm user/process `VIDEO_LEARNING_ROOT` resolves here, then run its runtime check. |
 | Voice | `D:\AI\Voice` | Use each product's venv/entry rather than global Python. |
@@ -19,7 +20,7 @@ Check only existence and reachability, never values. Kitool GPT Image has a priv
 
 ## Comfy model gate
 
-Before a route, verify the relevant names appear in the actual API dropdowns: FLUX checkpoint/CLIP/VAE for FLUX; PuLID model and Union ControlNet for identity plus pose; Wan UNET, UMT5 text encoder, and Wan VAE for Wan. The shared library contains verified components, but a new Canvas/API JSON pair and material-specific output remain separate acceptance work.
+Before a route, verify the relevant names appear in the actual API dropdowns: FLUX checkpoint/CLIP/VAE for FLUX; PuLID model and Union ControlNet for identity plus pose; Wan UNET, UMT5 text encoder, and Wan VAE for Wan. The shared library contains verified components, but a new Canvas/API JSON pair and material-specific output remain separate acceptance work. MiniMax H3 follows the same gate: verify its GGUF unet/text encoder and both VAEs in the live dropdowns before submission.
 
 Never copy models, outputs, private inputs, credential files, or caches into a repository merely to make a check pass.
 
