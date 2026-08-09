@@ -81,7 +81,7 @@ Refresh both files on a material machine change (model added or removed, softwar
 - A model file, node, installed package, or configured credential proves a working production chain.
 - A queued cloud request, HTTP 200, or generated output proves identity, pose, lip-sync, translation, speaker attribution, or visual quality.
 - A person recording alone is enough for long-form GPT-SoVITS/RVC training; use the material gate in `references/acceptance.md`.
-- The hidden ComfyUI API task and a manually opened visible Comfy Desktop may start competing servers on port 8188.
+- The hidden ComfyUI API task is an on-demand agent service, not a login-resident requirement. Reuse an existing `127.0.0.1:8188` service; otherwise start the current-user task without a console. After an agent generation finishes, stop only the task-owned API when the queue is empty and no visible Desktop or other task is using it. Never hide or terminate a user-opened Desktop window.
 - Download permission, platform login, model availability, or requested cloud-model selection without checking.
 
 ## Compact output contract
