@@ -31,6 +31,7 @@ When a media capability, path, model, node, rule, or acceptance status changes, 
 - `video-learning`（SKILL.md、README.md、references/*、scripts/*）
 - `download-videos`（SKILL.md、scripts/download-video.ps1）
 - `comfyui-video-workflow-author`（SKILL.md、assets/*）
+- `video-prompt-reverse`（SKILL.md、references/*、scripts/*、tests/*、assets/*）
 - `ai-short-drama`（SKILL.md、references/*）
 - `local-voice-studio`（SKILL.md、references/*）
 
@@ -61,7 +62,7 @@ Refresh both files on a material machine change (model added or removed, softwar
 | Request | Read | Default route |
 | --- | --- | --- |
 | Generate, edit, cut out, compositing, reproducible keyframes | `references/image.md` | image_gen, GPT Image CLI, ImageMagick, Sharp, rembg, or ComfyUI |
-| Download, understand, subtitle, translate, recognize, clip, or generate video | `references/video.md` | download-videos, video-learning, ComfyUI Wan, or authorized cloud entry |
+| Download, understand, subtitle, translate, recognize, clip, reverse a prompt, or generate video | `references/video.md` | download-videos, video-learning, video-prompt-reverse, ComfyUI Wan/H3, or authorized cloud entry |
 | Narrate, clone/convert an authorized voice, or lip sync | `references/audio.md` | VoxCPM2, GPT-SoVITS, RVC, or MuseTalk |
 | A chain has an unavailable service, model, CUDA dependency, port, path, or credential | `references/health-and-paths.md` | verify first; do not guess |
 | User supplies test assets or asks whether production quality is proven | `references/acceptance.md` | follow the applicable acceptance gate |

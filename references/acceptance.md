@@ -2,7 +2,7 @@
 
 Use this record for every new production workflow: input assets in order, authorization basis, executor/version, model/node names, prompt, seed, resolution, frames/fps/duration, elapsed time, output path, checks run, human conclusion, and remaining uncertainty. Store no assets or secrets in a public repository.
 
-## Current workstation acceptance snapshot — 2026-08-06
+## Current workstation acceptance snapshot — 2026-08-09
 
 `pass` means the stated narrow route ran on real material; it is not a blanket production-quality claim. `partial` means a real result exists but a quality or scope gate remains. `not accepted` means no end-to-end output exists for that capability.
 
@@ -25,6 +25,7 @@ Use this record for every new production workflow: input assets in order, author
 | Wan I2V | pass, one low-resolution I2V smoke | Saved Canvas/API pair; project NKF01 first frame produced a 512×288/33-frame/16-fps H.264 MP4 with small visible motion | Test target delivery resolution/duration and any tail-frame/adjacent-shot continuity; this entry has only first-frame control. |
 | Wan T2V 1.3B + Wan 2.2 T2V 14B | pass, basic runtime/semantic smoke; 14B visual comparison user-evaluated | The 1.3B model produced a 512×288/33-frame/16-fps H.264 MP4. Wan 2.2 T2V 14B FP8 + LightX2V v1.1 ran the A/B at 832×480/3 s ≈ 2.10 min (silent). User comparison of `ab-wan22-t2v` vs `ab-h3-t2v` on 2026-08-06 concluded Wan 14B visual quality is below H3. | 1.3B has no role reference; 14B passes runtime and media structure only; if a shot needs H3-class quality, prefer MiniMax H3 locally. |
 | MiniMax H3 T2V (GGUF) | pass, basic runtime/semantic smoke | 2026-08-06 real smoke: `output\video\MiniMax_H3_00001_.mp4`, H.264 832×480 24fps + AAC 32kHz stereo, 3.04s; saved `minimax-h3-t2v` Canvas/API/说明/运行记录; API model names match `object_info` | No role reference; basic semantic only, no production-quality or identity claim. |
+| Video prompt reverse → MiniMax H3 shot loop | partial | 2026-08-09 authorized 25.681 s source: 8 event intervals/24 frames, SkyCaptioner 8/8, four streams separated, 32B diagnostic draft generated; shot 007 produced a 3.042 s 832×480 H.264/AAC H3 clip in 112.025 s. Main casino/character/card/chip semantics passed. | Automatic strict prompt-package delivery remains blocked by current `llama-cli` stdout wrapping. Rendered similarity is partial: composition, costume, face shadow, palette purity, and exit transition differ; audio is very quiet and not production-accepted. |
 | MiniMax H3 I2V (GGUF) | partial, visual quality not accepted | 2026-08-06 real run: `output\video\riding-system-S01_00001_.mp4`, H.264 1152×768 24fps + AAC 32kHz stereo, 6.58s; first frame `kf01-system-awakening.png`; saved `minimax-h3-i2v` Canvas/API/说明/运行记录 | Human review of character consistency, motion, and UI/glow effect; per-shot visual quality gate remains. |
 
 | GPT-SoVITS, RVC, VoxCPM2 | not accepted | No authorized trained weight or conversion/narration sample has been accepted | Authorized clean data and transcript; resulting weight/index as applicable, sample, authorization record, and listening review. |
@@ -39,6 +40,7 @@ Use this record for every new production workflow: input assets in order, author
 | Wan I2V | Approved first frame; optional end frame; duration/fps/resolution/action | One-shot video and first/last-frame review for action, continuity, flicker, and duration. |
 | Wan T2V 1.3B + Wan 2.2 T2V 14B | pass, basic runtime/semantic smoke; 14B visual comparison user-evaluated | The 1.3B model produced a 512×288/33-frame/16-fps H.264 MP4. Wan 2.2 T2V 14B FP8 + LightX2V v1.1 ran the A/B at 832×480/3 s ≈ 2.10 min (silent). User comparison of `ab-wan22-t2v` vs `ab-h3-t2v` on 2026-08-06 concluded Wan 14B visual quality is below H3. | 1.3B has no role reference; 14B passes runtime and media structure only; if a shot needs H3-class quality, prefer MiniMax H3 locally. |
 | MiniMax H3 T2V | Publicly retainable test prompt and target timing/specification | Minimal workflow plus output proves runtime/basic semantics only. |
+| Video prompt reverse | Authorized source/reference, target engine, and optional generation approval | Event evidence, four separate source streams, strict package result, and separate prompt-correctness/rendered-similarity/audio/production-quality judgments. A diagnostic draft does not pass the strict package gate. |
 | MiniMax H3 I2V | Approved first frame, optional last frame, target duration/fps/resolution/action | One-shot video and first/last-frame review for action, continuity, flicker, and duration. |
 | Known-person recognition | Reference directory/images and independently labeled test video | Threshold record, review candidates, Top-1/false-positive/false-negative metrics. |
 | Voice conversion or cloning | Authorized 20–40 minute clean dataset and transcript | Weight (and optional index), conversion sample, authorization and listening review. |
