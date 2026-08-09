@@ -35,12 +35,12 @@ When a media capability, path, model, node, rule, or acceptance status changes, 
 - `ai-short-drama`（SKILL.md、references/*）
 - `local-voice-studio`（SKILL.md、references/*）
 
-父仓库管理（C:\Users\J\.codex，无独立远程，仅内容涉及才修改并提交到 .codex）：comfyui-local-image-workflows、rembg-background-removal、imagemagick-image-editing、sharp-node-image-processing、gpt-image、insta360-rename、jianying-last-frame、windows-rpa、playwright、powershell-safe-invocation、pdf、eb-visio-icon-opener。路径/路由/模型变更通常不涉及它们。
+本机生效但当前未被 Git 跟踪的 Skill：comfyui-local-image-workflows、rembg-background-removal、imagemagick-image-editing、sharp-node-image-processing、gpt-image、insta360-rename、jianying-last-frame、windows-rpa、playwright、powershell-safe-invocation、pdf、eb-visio-icon-opener。内容涉及时修改并校验，但不得通过 `.codex` 主仓库暂存、提交或声称已推送；若将来为其中某项建立独立仓库，再移入上方独立仓库清单。
 
 强制动作：
 1. 每次变更先判定归属：总控路由/验收状态、子 Skill 执行细节、`local-machine` 容量/路径/凭据存在性文档，是否需要同步。
 2. 全部改完后，对每个改动过的 Skill 运行 `quick_validate.py`，并对每个改动仓库运行 `git diff --check`。
-3. 有改动的独立仓库逐个提交并推送（每仓库一个提交，推送到各自 origin/main）；有改动的父仓库 skill 提交到 `.codex`。
+3. 有改动的独立仓库逐个提交并推送（每仓库一个提交，推送到各自 origin/main）；未跟踪的本机 Skill 只校验并明确报告为未推送，不得通过 `.codex` 主仓库暂存。
 4. `local-machine/storage-and-credentials.md` 与 `local-machine/local-media-inventory.md` 只在容量、路径、凭据存在性或能力状态变化时同步内容；它们被 `.gitignore` 忽略，**不推送**（含本机路径与凭据存在性信息，保持本地）。
 5. 完成后报告：改动文件清单、各仓库提交哈希、哪些文档特意不推送。
 
