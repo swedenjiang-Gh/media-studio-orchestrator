@@ -1,6 +1,6 @@
 ---
 name: media-studio-orchestrator
-description: Use as the required first entry point when a request involves local or cloud image generation/editing, background removal, ComfyUI/FLUX/Wan workflows, video download/analysis/subtitles/translation, video recognition/clipping, narration/voice conversion, lip sync, or multiple media capabilities. It selects and coordinates specialist Skills without replacing their execution rules.
+description: Use as the required first entry point when a request involves local or cloud image generation/editing, background removal, video depth-map generation, ComfyUI/FLUX/Wan workflows, video download/analysis/subtitles/translation, video recognition/clipping, narration/voice conversion, lip sync, or multiple media capabilities. It selects and coordinates specialist Skills without replacing their execution rules.
 ---
 
 # Media Studio Orchestrator
@@ -32,6 +32,7 @@ When a media capability, path, model, node, rule, or acceptance status changes, 
 - `download-videos`（SKILL.md、scripts/download-video.ps1）
 - `comfyui-video-workflow-author`（SKILL.md、assets/*）
 - `video-prompt-reverse`（SKILL.md、references/*、scripts/*、tests/*、assets/*）
+- `video-depth-map`（SKILL.md、references/*）
 - `ai-short-drama`（SKILL.md、references/*）
 - `local-voice-studio`（SKILL.md、references/*）
 
@@ -63,6 +64,7 @@ Refresh both files on a material machine change (model added or removed, softwar
 | --- | --- | --- |
 | Generate, edit, cut out, compositing, reproducible keyframes | `references/image.md` | image_gen, GPT Image CLI, ImageMagick, Sharp, rembg, or ComfyUI |
 | Download, understand, subtitle, translate, recognize, clip, reverse a prompt, or generate video | `references/video.md` | download-videos, video-learning, video-prompt-reverse, ComfyUI Wan/H3, or authorized cloud entry |
+| Generate a grayscale depth-map video or depth-conditioned structure guide | `references/video.md` | `video-depth-map`, then ComfyUI video workflow when a verified depth model/node is available |
 | Narrate, clone/convert an authorized voice, or lip sync | `references/audio.md` | VoxCPM2, GPT-SoVITS, RVC, or MuseTalk |
 | A chain has an unavailable service, model, CUDA dependency, port, path, or credential | `references/health-and-paths.md` | verify first; do not guess |
 | User supplies test assets or asks whether production quality is proven | `references/acceptance.md` | follow the applicable acceptance gate |
@@ -73,6 +75,7 @@ Refresh both files on a material machine change (model added or removed, softwar
 - Pixel-exact edits use `imagemagick-image-editing`. Node Buffer/Stream work uses `sharp-node-image-processing` only after approval to add a project-local dependency.
 - Semantic cutouts use `rembg-background-removal`. Fixed seed, offline, batch-consistent, or identity-plus-pose keyframes use the appropriate ComfyUI specialist Skill.
 - Ordinary video learning defaults to evidence-based understanding and a summary only. Screening/rough cuts, face recognition, new external subtitles, and non-Chinese translation are opt-in stages that require an explicit user request. Preserve original subtitles and timecodes. Do not claim a new SRT/VTT, subtitle attachment, or burned delivery until the actual writer/FFmpeg entry and a video smoke record are present.
+- A depth-map video is a structural conditioning asset, not an ordinary black-and-white grade. Route depth generation to `video-depth-map`; do not claim local readiness from a tutorial/web result or from Whisper/Tesseract availability. A local depth model/node must be visible and an actual output must be rendered before `ready`.
 - Any cloud video submission requires a current `视频生成任务上下文提交包.md`. A requested model is `blocked` when the chosen entry cannot explicitly select or reliably constrain it.
 - Voice/portrait work requires authorization for every supplied voice, recording, image, and video. Never silently train a voice model or overwrite source media.
 

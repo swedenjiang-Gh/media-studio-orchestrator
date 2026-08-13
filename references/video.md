@@ -28,6 +28,10 @@ Prompt reverse engineering does not authorize generation. After delivery, offer 
 
 ## Local generation
 
+### Depth-map video
+
+When the user asks for “深度黑白视频”, a depth map, depth-conditioned dance replacement, or a grayscale structural guide, route the depth stage to `video-depth-map`. This is not a color-grade operation. The local route is `partial` until a depth-estimation model or ComfyUI depth node is visible and a real time-aligned output has been rendered. `faster_whisper` and Tesseract support transcription/OCR only and do not provide depth estimation. Do not start ComfyUI for a learning-only explanation; use it only for an explicitly requested generation workflow.
+
 Local video generation is a first-class route equal to the cloud, not merely a preview: Wan 2.2 T2V 14B (text to video, ≈2.10 min at 832×480/3 s), Wan 2.2 I2V 14B (≈1.50 min), and MiniMax H3 (T2V/I2V with native AAC 32 kHz audio, ≈2.0–2.3 min). When the user asks to generate a video, present both routes (local vs cloud) and let the user choose before spending quota or compute; do not default to cloud with local treated only as a reminder. Choose local for free generation, fixed-seed reproducibility, controlled outputs, privacy, and batch-consistent shots; choose cloud when the local chain cannot meet the requested model/quality/duration/audio or the user explicitly picks it.
 
 
