@@ -64,7 +64,7 @@ Refresh both files on a material machine change (model added or removed, softwar
 
 Choose the canonical destination by task ownership, not by the executable that produced the file:
 
-1. If an image, video, audio, depth map, prompt package, or lip-sync result belongs to an active short-drama or video-production project, save the final deliverable under that project's existing directory contract.
+1. If an image, video, audio, depth map, prompt package, or lip-sync result belongs to an active short-drama project, save the final deliverable under `D:\MediaStudio\AIShortDrama\Projects\<project>\`. Project source assets are under `D:\MediaStudio\assets\` (`characters`, `props`, `keyframes`, `scene`); read the project's authority files before selecting them. `E:\AI视频` supplies project rules, templates, tools, and environments only.
 2. Keep downloaded source media centralized under `D:\MediaStudio\VideoDownloads\<platform>` and reference it from projects instead of duplicating it.
 3. For a standalone task, use the primary specialist's job root: video learning `D:\MediaStudio\VideoLearnings\<job>`, prompt reverse `D:\MediaStudio\VideoPromptReverse\<job>`, depth maps `D:\MediaStudio\VideoDepthMaps\<job>`, MuseTalk `D:\MediaStudio\MuseTalk\<job>`, local voice `D:\MediaStudio\Voice\<job>`, independent local image editing/cutouts `D:\MediaStudio\Image\<job>`, and GPT Image `D:\MediaStudio\GPT-Imag\<job>`.
 4. Native standalone ComfyUI generation uses `D:\MediaStudio\Comfyui\Image\<job>` or `D:\MediaStudio\Comfyui\Video\<job>`. When a specialist such as `video-depth-map` or `video-prompt-reverse` invokes ComfyUI, treat the ComfyUI file as an execution artifact and place the canonical deliverable under the owning project or specialist job.
