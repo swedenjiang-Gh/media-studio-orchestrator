@@ -31,12 +31,13 @@ When a media capability, path, model, node, rule, or acceptance status changes, 
 - `video-learning`（SKILL.md、README.md、references/*、scripts/*）
 - `download-videos`（SKILL.md、scripts/download-video.ps1）
 - `comfyui-video-workflow-author`（SKILL.md、assets/*）
+- `comfyui-local-image-workflows`（SKILL.md、agents/*、scripts/*、tests/*）
 - `video-prompt-reverse`（SKILL.md、references/*、scripts/*、tests/*、assets/*）
 - `video-depth-map`（SKILL.md、references/*）
 - `ai-short-drama`（SKILL.md、references/*）
 - `local-voice-studio`（SKILL.md、references/*）
 
-本机生效但当前未被 Git 跟踪的 Skill：comfyui-local-image-workflows、rembg-background-removal、imagemagick-image-editing、sharp-node-image-processing、gpt-image、insta360-rename、jianying-last-frame、windows-rpa、playwright、powershell-safe-invocation、pdf、eb-visio-icon-opener。内容涉及时修改并校验，但不得通过 `.codex` 主仓库暂存、提交或声称已推送；若将来为其中某项建立独立仓库，再移入上方独立仓库清单。
+本机生效但当前未被 Git 跟踪的 Skill：rembg-background-removal、imagemagick-image-editing、sharp-node-image-processing、gpt-image、insta360-rename、jianying-last-frame、windows-rpa、playwright、powershell-safe-invocation、pdf、eb-visio-icon-opener。内容涉及时修改并校验，但不得通过 `.codex` 主仓库暂存、提交或声称已推送；若将来为其中某项建立独立仓库，再移入上方独立仓库清单。
 
 强制动作：
 1. 每次变更先判定归属：总控路由/验收状态、子 Skill 执行细节、`local-machine` 容量/路径/凭据存在性文档，是否需要同步。
