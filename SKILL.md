@@ -60,6 +60,18 @@ Refresh both files on a material machine change (model added or removed, softwar
 5. Enforce consent, model-selection, and project-context gates; then select the execution route.
 6. Preserve source assets and record the output path, parameters, executor, and validation boundary.
 
+## Output ownership
+
+Choose the canonical destination by task ownership, not by the executable that produced the file:
+
+1. If an image, video, audio, depth map, prompt package, or lip-sync result belongs to an active short-drama or video-production project, save the final deliverable under that project's existing directory contract.
+2. Keep downloaded source media centralized under `D:\MediaStudio\VideoDownloads\<platform>` and reference it from projects instead of duplicating it.
+3. For a standalone task, use the primary specialist's job root: video learning `D:\MediaStudio\VideoLearnings\<job>`, prompt reverse `D:\MediaStudio\VideoPromptReverse\<job>`, depth maps `D:\MediaStudio\VideoDepthMaps\<job>`, MuseTalk `D:\MediaStudio\MuseTalk\<job>`, local voice `D:\MediaStudio\Voice\<job>`, and GPT Image `D:\MediaStudio\GPT-Imag\<job>`.
+4. Native standalone ComfyUI generation uses `D:\Video\Comfyui\Image\<job>` or `D:\Video\Comfyui\Video\<job>`. When a specialist such as `video-depth-map` or `video-prompt-reverse` invokes ComfyUI, treat the ComfyUI file as an execution artifact and place the canonical deliverable under the owning project or specialist job.
+5. Keep ComfyUI Canvas/API/说明/运行记录 in `D:\Comfy-Desktop\ComfyUI-Shared\workflow-library`; they are reusable workflow assets, not media deliverables.
+
+Use one safe local directory name for `<job>` and keep related sidecars, metadata, subtitles, and evidence inside that job. Analysis audio extracted by `video-learning` stays with its learning job; H3 audio embedded in a generated video stays with the video.
+
 | Request | Read | Default route |
 | --- | --- | --- |
 | Generate, edit, cut out, compositing, reproducible keyframes | `references/image.md` | image_gen, GPT Image CLI, ImageMagick, Sharp, rembg, or ComfyUI |
@@ -89,7 +101,7 @@ Refresh both files on a material machine change (model added or removed, softwar
 
 ## Compact output contract
 
-Report: selected route, state, checks performed, required inputs or authorization, submitted/not submitted, output location when created, and the remaining validation boundary. Do not expose credential values, cookies, tokens, or private asset paths in a public artifact. For every video task, the report must include a compliance statement: frame-extraction method (event-driven or declared fixed-interval approximation), transcription quality-gate steps actually run, and subtitle status (requested/not requested/partial). A step that was not run must be stated as not run rather than silently skipped.
+Report: selected route, state, checks performed, required inputs or authorization, submitted/not submitted, canonical output location when created, and the remaining validation boundary. Do not expose credential values, cookies, tokens, or private asset paths in a public artifact. For every video task, the report must include a compliance statement: frame-extraction method (event-driven or declared fixed-interval approximation), transcription quality-gate steps actually run, and subtitle status (requested/not requested/partial). A step that was not run must be stated as not run rather than silently skipped.
 
 ## Deliverable links
 

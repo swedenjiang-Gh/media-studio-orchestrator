@@ -4,6 +4,8 @@
 
 For an authorized URL, use `download-videos`; do not bypass DRM, paywalls, or access controls. Then use `video-learning` for media probing and the evidence needed for the requested learning result. The default delivery is learning notes and a summary; do not automatically screen clips, recognize faces, create a new SRT, or translate non-Chinese dialogue. Keep the original embedded/external subtitle track and source timecodes.
 
+Keep downloaded sources and subtitle sidecars under `D:\MediaStudio\VideoDownloads\<platform>`. A standalone learning job owns `D:\MediaStudio\VideoLearnings\<job>`; a project-owned learning result follows the project directory instead. Do not duplicate the downloaded source into either destination.
+
 Enable an extra delivery stage only when the user explicitly requests it: `外挂字幕`/`字幕` creates a new SRT; `双语字幕`/`翻译` creates source-plus-Simplified-Chinese SRT; `筛片`/`粗剪`/`精彩片段`/`有对话片段` creates review candidates; a family-video request to find a named person or require their complete visibility enables the reference-library face review route. A family-video request for only highlights or dialogue does not enable face scanning.
 
 ## Subtitle status
@@ -26,11 +28,15 @@ Use four bounded local 32B stages and one deterministic controller pass. The con
 
 Prompt reverse engineering does not authorize generation. After delivery, offer MiniMax H3, Wan/local, Seedance/cloud, another engine, or no generation as explicit choices. If the user has already authorized a named acceptance generation in the same task, reuse the stored ComfyUI Canvas/API pair and record prompt correctness separately from rendered similarity, audio, and production quality.
 
+A standalone reverse job owns `D:\MediaStudio\VideoPromptReverse\<job>`. If an authorized comparison render is created through ComfyUI, keep the canonical render under that reverse job; ComfyUI is the executor, not the output owner. Project-owned reverse results follow the project directory.
+
 ## Local generation
 
 ### Depth-map video
 
 When the user asks for “深度黑白视频”, a depth map, depth-conditioned dance replacement, or a grayscale structural guide, route the depth stage to `video-depth-map`. This is not a color-grade operation. The local route is `partial` until a depth-estimation model or ComfyUI depth node is visible and a real time-aligned output has been rendered. `faster_whisper` and Tesseract support transcription/OCR only and do not provide depth estimation. Do not start ComfyUI for a learning-only explanation; use it only for an explicitly requested generation workflow.
+
+For a standalone depth task, use ComfyUI only as the execution engine and deliver the grayscale video, optional inferno preview, metadata, and review evidence under `D:\MediaStudio\VideoDepthMaps\<job>`. Project-owned depth results follow the project directory. Native standalone Wan/H3 generation that is not owned by another specialist uses `D:\Video\Comfyui\Video\<job>`.
 
 Local video generation is a first-class route equal to the cloud, not merely a preview: Wan 2.2 T2V 14B (text to video, ≈2.10 min at 832×480/3 s), Wan 2.2 I2V 14B (≈1.50 min), and MiniMax H3 (T2V/I2V with native AAC 32 kHz audio, ≈2.0–2.3 min). When the user asks to generate a video, present both routes (local vs cloud) and let the user choose before spending quota or compute; do not default to cloud with local treated only as a reminder. Choose local for free generation, fixed-seed reproducibility, controlled outputs, privacy, and batch-consistent shots; choose cloud when the local chain cannot meet the requested model/quality/duration/audio or the user explicitly picks it.
 

@@ -13,4 +13,6 @@ Select one primary route. Preserve source files and write a new output unless th
 | Offline/fixed-seed/reproducible/batch-consistent keyframe | `comfyui-local-image-workflows` | Check live API nodes and model dropdowns first. |
 | Identity plus specified pose/composition | ComfyUI PuLID-Flux + FLUX Union ControlNet | Need authorized identity images, pose/composition input, and a saved Canvas/API pair. Redux and Fill are not substitutes. |
 
+For project work, save the final image under the project's existing asset contract. For a standalone native ComfyUI image job, use `D:\Video\Comfyui\Image\<job>`. For a standalone GPT Image job, download the generated image and record to `D:\MediaStudio\GPT-Imag\<job>`; a remote URL alone is not a completed local delivery. Outputs from rembg, ImageMagick, Sharp, and Jianying last-frame keep their task-selected paths unless a project contract owns them.
+
 FLUX.1-dev is non-commercial. FLUX Fill is for limited final masked refinement and may be slow. A fixed-seed FLUX text-to-image smoke test proves only the tested baseline; do not promote it to identity or video-quality proof.

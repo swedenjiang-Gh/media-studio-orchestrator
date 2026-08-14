@@ -10,3 +10,5 @@ All voice, recording, portrait, and driving-audio work requires explicit authori
 | Portrait/video plus driving audio lip sync | MuseTalk | Authorized face video or frontal portrait and authorized driving audio; evaluate sync, identity, stability, and drift. |
 
 Do not state that a target voice model exists merely because RVC/GPT-SoVITS base environments are installed. Do not claim a voice clone is approved until authorization and listening review are recorded. MuseTalk does not train a voice model.
+
+Project-owned voice and lip-sync results follow the project directory. Standalone narration/voice conversion uses `D:\MediaStudio\Voice\<job>`; standalone MuseTalk uses `D:\MediaStudio\MuseTalk\<job>`. Keep model weights and runtime environments under their existing `D:\AI` roots. Audio extracted only for video analysis remains inside the owning `video-learning` job.
