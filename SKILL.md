@@ -72,6 +72,17 @@ Choose the canonical destination by task ownership, not by the executable that p
 
 Use one safe local directory name for `<job>` and keep related sidecars, metadata, subtitles, and evidence inside that job. Analysis audio extracted by `video-learning` stays with its learning job; H3 audio embedded in a generated video stays with the video.
 
+## Asset selection order
+
+Use only the smallest authorized asset scope; never scan arbitrary disks for a plausible image, video, voice, or prop.
+
+1. For a project task, use the project's approved, task-specific assets and authority record first. For AI short drama this is `D:\MediaStudio\AIShortDrama\Projects\<project>\`.
+2. If the project has no suitable approved asset, search the authorized reusable library at `D:\MediaStudio\assets\` (`characters`, `props`, `keyframes`, `scene`).
+3. If neither source supplies the required visible structure, offer `image_gen` to make a clearly labeled guide/reference copy. It is not an original character asset or final deliverable.
+4. Ask the user for material only after those routes fail, or immediately when the task requires personal identity, voice, rights, or another authorization that the library cannot establish.
+
+For a standalone task, start from user-supplied/current-task inputs, then step 2. This order applies to every routed specialist; a specialist may narrow it for its own consent gate but may not replace it.
+
 | Request | Read | Default route |
 | --- | --- | --- |
 | Generate, edit, cut out, compositing, reproducible keyframes | `references/image.md` | image_gen, GPT Image CLI, ImageMagick, Sharp, rembg, or ComfyUI |
