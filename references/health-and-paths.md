@@ -8,6 +8,7 @@ Use this reference when a route needs a new or revalidated local/software/creden
 | Comfy input/output | input `D:\Comfy-Desktop\ComfyUI-Shared\input`; output root `D:\Video\Comfyui` | Confirm the active backend uses the shared input and new output root. Native jobs use `Image\<job>` or `Video\<job>`. |
 | MiniMax H3 (GGUF) | `http://127.0.0.1:8188/object_info` | Confirm `MiniMaxH3ImageToVideo` exists; `UnetLoaderGGUF` lists `MiniMax-H3-FL2VA-Q4_K_M.gguf`; `CLIPLoaderGGUF` lists `qwen3vl_32b_minimax_h3-Q4_K_M.gguf` with type `minimax`; `VAELoader` lists `minimax_h3_video_vae_fp16.safetensors` and `minimax_h3_audio_vae_fp32.safetensors`. |
 | rembg | `D:\AI\rembg` | Run its dedicated venv entry and confirm `CUDAExecutionProvider` is first; confirm the selected ONNX model exists. |
+| Standalone image editing/cutout | outputs `D:\MediaStudio\Image` | Create one safe `<job>` directory; project assets and native ComfyUI images use their owning roots instead. |
 | Video learning | tools `D:\CodexVideoLearning`; standalone outputs `D:\MediaStudio\VideoLearnings` | Confirm `VIDEO_LEARNING_ROOT` and `VIDEO_LEARNINGS_ROOT`, then run its runtime check. |
 | Voice | runtime `D:\AI\Voice`; standalone outputs `D:\MediaStudio\Voice` | Use each product's venv/entry rather than global Python. |
 | MuseTalk | runtime `D:\AI\Video\MuseTalk`; standalone outputs `D:\MediaStudio\MuseTalk` | Check its declared CLI and available GPU before processing. |

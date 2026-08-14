@@ -66,7 +66,7 @@ Choose the canonical destination by task ownership, not by the executable that p
 
 1. If an image, video, audio, depth map, prompt package, or lip-sync result belongs to an active short-drama or video-production project, save the final deliverable under that project's existing directory contract.
 2. Keep downloaded source media centralized under `D:\MediaStudio\VideoDownloads\<platform>` and reference it from projects instead of duplicating it.
-3. For a standalone task, use the primary specialist's job root: video learning `D:\MediaStudio\VideoLearnings\<job>`, prompt reverse `D:\MediaStudio\VideoPromptReverse\<job>`, depth maps `D:\MediaStudio\VideoDepthMaps\<job>`, MuseTalk `D:\MediaStudio\MuseTalk\<job>`, local voice `D:\MediaStudio\Voice\<job>`, and GPT Image `D:\MediaStudio\GPT-Imag\<job>`.
+3. For a standalone task, use the primary specialist's job root: video learning `D:\MediaStudio\VideoLearnings\<job>`, prompt reverse `D:\MediaStudio\VideoPromptReverse\<job>`, depth maps `D:\MediaStudio\VideoDepthMaps\<job>`, MuseTalk `D:\MediaStudio\MuseTalk\<job>`, local voice `D:\MediaStudio\Voice\<job>`, independent local image editing/cutouts `D:\MediaStudio\Image\<job>`, and GPT Image `D:\MediaStudio\GPT-Imag\<job>`.
 4. Native standalone ComfyUI generation uses `D:\Video\Comfyui\Image\<job>` or `D:\Video\Comfyui\Video\<job>`. When a specialist such as `video-depth-map` or `video-prompt-reverse` invokes ComfyUI, treat the ComfyUI file as an execution artifact and place the canonical deliverable under the owning project or specialist job.
 5. Keep ComfyUI Canvas/API/说明/运行记录 in `D:\Comfy-Desktop\ComfyUI-Shared\workflow-library`; they are reusable workflow assets, not media deliverables.
 
@@ -84,8 +84,8 @@ Use one safe local directory name for `<job>` and keep related sidecars, metadat
 ## Route boundaries
 
 - Ordinary semantic image generation/editing uses built-in `image_gen`; an explicit CLI request uses `gpt-image`.
-- Pixel-exact edits use `imagemagick-image-editing`. Node Buffer/Stream work uses `sharp-node-image-processing` only after approval to add a project-local dependency.
-- Semantic cutouts use `rembg-background-removal`. Fixed seed, offline, batch-consistent, or identity-plus-pose keyframes use the appropriate ComfyUI specialist Skill.
+- Pixel-exact edits use `imagemagick-image-editing`; standalone results go to `D:\MediaStudio\Image\<job>`. Node Buffer/Stream work uses `sharp-node-image-processing` only after approval to add a project-local dependency.
+- Semantic cutouts use `rembg-background-removal`; standalone results go to `D:\MediaStudio\Image\<job>`. Fixed seed, offline, batch-consistent, or identity-plus-pose keyframes use the appropriate ComfyUI specialist Skill.
 - Ordinary video learning defaults to evidence-based understanding and a summary only. Screening/rough cuts, face recognition, new external subtitles, and non-Chinese translation are opt-in stages that require an explicit user request. Preserve original subtitles and timecodes. Do not claim a new SRT/VTT, subtitle attachment, or burned delivery until the actual writer/FFmpeg entry and a video smoke record are present.
 - A depth-map video is a structural conditioning asset, not an ordinary black-and-white grade. Route depth generation to `video-depth-map`; do not claim local readiness from a tutorial/web result or from Whisper/Tesseract availability. A local depth model/node must be visible and an actual output must be rendered before `ready`.
 - Any cloud video submission requires a current `视频生成任务上下文提交包.md`. A requested model is `blocked` when the chosen entry cannot explicitly select or reliably constrain it.
