@@ -11,6 +11,7 @@ Use this reference when a route needs a new or revalidated local/software/creden
 | Video learning | tools `D:\CodexVideoLearning`; standalone outputs `D:\MediaStudio\VideoLearnings` | Confirm `VIDEO_LEARNING_ROOT` and `VIDEO_LEARNINGS_ROOT`, then run its runtime check. |
 | Voice | runtime `D:\AI\Voice`; standalone outputs `D:\MediaStudio\Voice` | Use each product's venv/entry rather than global Python. |
 | MuseTalk | runtime `D:\AI\Video\MuseTalk`; standalone outputs `D:\MediaStudio\MuseTalk` | Check its declared CLI and available GPU before processing. |
+| Whole-person reconstruction | PuLID, Union ControlNet/depth or pose control, Wan I2V, and authorized target references | Confirm exact live node/model dropdowns and a saved Canvas/API pair for the shot. This is not evidence of a dedicated ReActor/SimSwap/FaceFusion face-swap chain. |
 
 For agent-driven ComfyUI API work, use the existing hidden local API task. For user-operated canvas work, launch Comfy Desktop visibly. Reuse a healthy service; do not start a second backend on port 8188.
 
@@ -21,6 +22,8 @@ Check only existence and reachability, never values. Kitool GPT Image has a priv
 ## Comfy model gate
 
 Before a route, verify the relevant names appear in the actual API dropdowns: FLUX checkpoint/CLIP/VAE for FLUX; PuLID model and Union ControlNet for identity plus pose; Wan UNET, UMT5 text encoder, and Wan VAE for Wan. The shared library contains verified components, but a new Canvas/API JSON pair and material-specific output remain separate acceptance work. MiniMax H3 follows the same gate: verify its GGUF unet/text encoder and both VAEs in the live dropdowns before submission.
+
+For a request to replace an entire person while retaining source staging, use the authorized-reference reconstruction route: PuLID for identity, Union ControlNet/depth or pose for visible structure, and per-shot Wan I2V for motion. Do not describe it as, or substitute it for, a dedicated face-only swap. ReActor, SimSwap, and FaceFusion are currently `missing` on this workstation unless a later verified install and workflow record says otherwise.
 
 Never copy models, outputs, private inputs, credential files, or caches into a repository merely to make a check pass.
 
